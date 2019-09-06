@@ -73,6 +73,13 @@ void PhyllotaxisApp::update()
 	if (pause) return;
 	gl::ScopedFramebuffer fbScp(mFbo);
 
+	/*
+	Vogel's formula: a=n*137.5 , r=c√n
+where:
+ n is the ordering number of a floret, counting outward from thecenter. This is the reverse of floret age in a real plant.
+ a is the angle between a reference direction and the position vec-tor of thenthfloret in a polar coordinate system originating atthe center of the capitulum.  It follows that thedivergence an-glebetween the position vectors of any two successive florets isconstant,α= 137.5◦.
+ r is the distance between the center of the capitulum and thecenter of thenthfloret, given a constant scaling parameterc.
+	*/
 	float a = glm::radians(n_m * angle_m);
 	float r = scale_m * sqrtf(n_m);
 
